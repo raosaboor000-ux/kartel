@@ -1,0 +1,35 @@
+MEDIA STRUCTURE
+===============
+
+memories/
+  childhood/
+    images/ photo-001..006
+
+  baddie/
+    images/ photo-007..011
+    videos/ clip-003.mp4
+
+  main-character-phase/
+    images/ photo-012..016
+    videos/ clip-001.mp4, clip-004.mp4
+
+  certified-clown-moments/
+    images/ photo-017..020
+    videos/ clip-005.mp4, clip-006.mp4
+
+  recent-lore/
+    images/ photo-021..024
+    videos/ clip-002.mp4, clip-007.mp4, clip-008.mp4
+
+pages/
+  landing/
+    images/ teaser-01..06.jpeg
+    (used by Landing hero floating photos)
+
+  finale/
+    videos/ clip-008.mp4, clip-009.mp4, clip-010.mp4
+    (used by FinalSection video tiles)
+
+extras/
+  images/ photo-025..078
+  (unused reserve pool)

@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at top, #14142b 0%, #050509 45%, #020204 100%);
+  color: #f5f3ff;
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.theme-root {
+  --fg: #f5f3ff;
+  --bg-main: radial-gradient(circle at top, #14142b 0%, #050509 45%, #020204 100%);
+  --nebula-main: radial-gradient(circle at 20% 20%, rgba(129, 140, 248, 0.2), transparent 46%),
+    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.16), transparent 44%),
+    radial-gradient(circle at center, rgba(99, 102, 241, 0.1), transparent 58%);
+  color: var(--fg);
+  background: var(--bg-main);
+}
+
+.theme-nebula {
+  background: var(--nebula-main);
+}
+
+.theme-node-active {
+  transition: box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-brat {
+  --fg: #e9ffd6;
+  --bg-main: linear-gradient(180deg, #8ace00 0%, #79b900 100%);
+  --nebula-main: linear-gradient(180deg, #8ace00 0%, #79b900 100%);
+}
+
+.theme-brat .theme-node-active {
+  border-color: rgba(190, 242, 100, 0.74) !important;
+  background: rgba(163, 230, 53, 0.18) !important;
+  color: #ecfccb !important;
+  box-shadow: 0 0 32px rgba(163, 230, 53, 0.42) !important;
+}
+
+.theme-brat .shooting-star {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(190, 242, 100, 0.95));
+  box-shadow: 0 0 14px rgba(190, 242, 100, 0.7);
+}
+
+.theme-brat .text-violet-100,
+.theme-brat .text-violet-200,
+.theme-brat .text-violet-300,
+.theme-brat .text-violet-400 {
+  color: #101402 !important;
+}
+
+.theme-brat .backdrop-blur,
+.theme-brat .backdrop-blur-lg,
+.theme-brat .backdrop-blur-xl {
+  backdrop-filter: none !important;
+}
+
+.shooting-star {
+  position: absolute;
+  top: 8%;
+  left: -15%;
+  width: 140px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(196, 181, 253, 0.95));
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.7);
+  transform: rotate(-18deg);
+  animation: shoot 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) rotate(-18deg);
+  }
+  6% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+    transform: translateX(85vw) translateY(26vh) rotate(-18deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(85vw) translateY(26vh) rotate(-18deg);
+  }
+}

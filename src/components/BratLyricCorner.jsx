@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 
 /** Each set = stanzas; larger gap between stanzas (Spotify-style verse breaks). */
 const LYRIC_SETS = [
@@ -138,27 +137,12 @@ export default function BratLyricCorner() {
   }, [setIndex]);
 
   return (
-    <motion.div
-      className="pointer-events-none absolute bottom-4 left-4 z-[12] w-[min(13rem,calc(100vw-2rem))] max-w-[min(13rem,calc(100vw-2rem))] md:bottom-8 md:left-10 md:w-[13.75rem] md:max-w-[13.75rem]"
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.45, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div className="pointer-events-none absolute bottom-4 left-4 z-[12] w-[min(13rem,calc(100vw-2rem))] max-w-[min(13rem,calc(100vw-2rem))] md:bottom-8 md:left-10 md:w-[13.75rem] md:max-w-[13.75rem]">
       <div className="rounded-2xl px-3 py-3.5 shadow-[0_10px_36px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.08)] md:px-3.5 md:py-4">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={setIndex}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <LyricBlock stanzas={LYRIC_SETS[setIndex].stanzas} />
-          </motion.div>
-        </AnimatePresence>
+        <LyricBlock stanzas={LYRIC_SETS[setIndex].stanzas} />
 
         <SpotifyShuffleButton onShuffle={shuffleLyrics} />
       </div>
-    </motion.div>
+    </div>
   );
 }

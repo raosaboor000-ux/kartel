@@ -10,8 +10,7 @@ import { memoryData, orderedNodes } from "./data/memories";
 
 const baddieQuestion = {
   prompt: "What's THE song on brat?",
-  options: ["Party 4 u", "Everything is Romantic", "Guess ft Billie", "Club Classics"],
-  answer: "Everything is Romantic"
+  answer: "EIR"
 };
 
 function LoadingScreen({ onDone }) {

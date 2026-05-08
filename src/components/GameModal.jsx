@@ -3,12 +3,17 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function GameModal({ isOpen, onClose, onSuccess, question, theme = "cosmic" }) {
   const [status, setStatus] = useState("idle");
+  const [answerInput, setAnswerInput] = useState("");
   const isBrat = theme === "brat";
 
-  const checkAnswer = (option) => {
-    if (option === question.answer) {
+  const checkAnswer = (value) => {
+    const normalizedInput = value.trim().toLowerCase();
+    const normalizedAnswer = question.answer.trim().toLowerCase();
+
+    if (normalizedInput === normalizedAnswer) {
       setStatus("correct");
       setTimeout(() => {
+        setAnswerInput("");
         setStatus("idle");
         onSuccess();
       }, 900);
@@ -36,6 +41,10 @@ export default function GameModal({ isOpen, onClose, onSuccess, question, theme 
     ? "rounded-md border border-black/70 bg-black/12 px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-tight text-black transition hover:bg-black/20 md:text-[13px]"
     : "rounded-lg border border-violet-400/45 bg-violet-500/15 px-3 py-2.5 text-left text-sm text-violet-100 transition hover:bg-violet-500/25";
 
+  const input = isBrat
+    ? "w-full rounded-md border border-black/70 bg-black/12 px-3 py-2.5 text-sm font-semibold tracking-tight text-black outline-none placeholder:text-black/55 focus:border-black"
+    : "w-full rounded-lg border border-violet-400/45 bg-violet-500/10 px-3 py-2.5 text-sm text-violet-100 outline-none placeholder:text-violet-300/70 focus:border-violet-300";
+
   const statusOk = isBrat ? "font-medium text-black" : "text-emerald-300";
   const statusBad = isBrat ? "font-medium text-black/70" : "text-rose-300";
   const closeLink = isBrat ? "font-medium text-black/55 hover:text-black/80" : "text-violet-400 hover:text-violet-200";
@@ -59,13 +68,26 @@ export default function GameModal({ isOpen, onClose, onSuccess, question, theme 
             <p className={kicker}>Baddie lock</p>
             <h3 className={heading}>{question.prompt}</h3>
 
-            <div className={`mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 ${isBrat ? "gap-2.5" : ""}`}>
-              {question.options.map((option) => (
-                <button key={option} type="button" onClick={() => checkAnswer(option)} className={btn}>
-                  {option}
-                </button>
-              ))}
-            </div>
+            <form
+              className="mt-5 space-y-2.5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                checkAnswer(answerInput);
+              }}
+            >
+              <input
+                type="text"
+                value={answerInput}
+                onChange={(e) => setAnswerInput(e.target.value)}
+                placeholder="Type your answer"
+                className={input}
+                autoComplete="off"
+                spellCheck={false}
+              />
+              <button type="submit" className={btn}>
+                unlock baddie
+              </button>
+            </form>
 
             <p className={`mt-4 min-h-[1.25rem] text-sm ${status === "correct" ? statusOk : ""} ${status === "wrong" ? statusBad : ""}`}>
               {status === "correct" && "ok memory still strong, respect"}

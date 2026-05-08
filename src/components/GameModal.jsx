@@ -42,7 +42,7 @@ export default function GameModal({ isOpen, onClose, onSuccess, question, theme 
     : "rounded-lg border border-violet-400/45 bg-violet-500/15 px-3 py-2.5 text-left text-sm text-violet-100 transition hover:bg-violet-500/25";
 
   const input = isBrat
-    ? "w-full rounded-md border border-black/70 bg-black/12 px-3 py-2.5 text-sm font-semibold tracking-tight text-black outline-none placeholder:text-black/55 focus:border-black"
+    ? "w-full rounded-md border border-black/70 bg-[#b8e35a] px-3 py-2.5 text-sm font-semibold tracking-tight text-black caret-black outline-none placeholder:text-black/60 focus:border-black focus:bg-[#c3ea6a]"
     : "w-full rounded-lg border border-violet-400/45 bg-violet-500/10 px-3 py-2.5 text-sm text-violet-100 outline-none placeholder:text-violet-300/70 focus:border-violet-300";
 
   const statusOk = isBrat ? "font-medium text-black" : "text-emerald-300";

@@ -20,9 +20,9 @@ function PlaylistGlyph({ className }) {
 
 export default function AudioPlayer({ backgroundSrc, voiceSrc, showVoiceButton, theme, stage }) {
   const spotifyPlaylistUrl =
-    "https://open.spotify.com/playlist/5EMkiHpoi1UWq5kKFkP6ob?si=ee02a76dce134b41";
+    "https://open.spotify.com/playlist/0Jv6fUdumOmTd0INSaPOFh?si=9f4ba04a82df4a29";
   const spotifyEmbedUrl =
-    "https://open.spotify.com/embed/playlist/5EMkiHpoi1UWq5kKFkP6ob?utm_source=generator&theme=0";
+    "https://open.spotify.com/embed/playlist/0Jv6fUdumOmTd0INSaPOFh?utm_source=generator&theme=0";
 
   const voiceRef = useRef(null);
   const [showSpotify, setShowSpotify] = useState(true);
